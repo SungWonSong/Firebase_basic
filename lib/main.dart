@@ -17,7 +17,7 @@ void main() async {
   runApp(const MyApp());
 }
 
-/* 비동기 async/await 사용을 통해 초기화하고 'MyApp' 클래스 인스턴스 생성하고 애플리케이션 실행
+/* 비동기 async/await ' 사용을 통해 초기화하고 'MyApp클래스 인스턴스 생성하고 애플리케이션 실행
    main.dart 파일에 firebase 초기화 코드 작성(void main 함수) */
 
 class MyApp extends StatelessWidget {
@@ -43,6 +43,9 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  /* final을 통해서 다른 인스턴스로 가는것을 방지하지만, 참조하는 TextEditingController의 인스턴스를
+     통해 TextField 내용을 수정 및 초기화가 가능해진다 */
 
   Future<void> signUp() async {
     try {
@@ -121,6 +124,9 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                   controller: _emailController,
                   decoration: InputDecoration(labelText: 'Email'),
                 ),
+                /* flutter 내부에서 제공하는 기본적인 구성요소인 controller를 통하여 아이디, 비밀번호 등 수정가능한
+                부분에 할당하여 TextField의 유효성 검사를 수행, 혹은 입력값을 서버로 보내기위해 -> controller 사용
+                 */
               ),
               Container(
                 width: 400,
@@ -152,6 +158,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                                 fontSize: 20, fontWeight: FontWeight.bold)),
                       )),
                   SizedBox(width: 10),
+
                   ElevatedButton(
                       onPressed: signOut,
                       child: Padding(
