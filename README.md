@@ -1,6 +1,6 @@
-# myuniquefunfun
+# Firebase_basic
 
-A new Flutter project.
+signup / signin / sign out : basic code(understanding)
 
 ## Getting Started
 
